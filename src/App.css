@@ -1,6 +1,10 @@
 .App {
   text-align: center;
   padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 button{
   padding: 0.5rem;
@@ -11,14 +15,21 @@ li{
   text-align: left;
 }
 .heading{
+  background-color: #cccccc94;
   font-weight: 800;
+}
+.flex{
+  display: flex;
+}
+.flex-row{
+  justify-content: space-between;
 }
 .grid{
   display: grid;
   align-items: center;
 }
 .grid-row{
-  grid-template-columns:  40px auto auto 50px 40px ;
+  grid-template-columns:  40px auto auto auto auto ;
   justify-content: space-around;
 }
 .selected{
@@ -37,4 +48,7 @@ input{
 }
 .nav-btn:focus{
 background-color: red;
+}
+li:hover{
+  background-color: rgba(234, 234, 234, 0.58);
 }

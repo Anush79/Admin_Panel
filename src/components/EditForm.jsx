@@ -18,7 +18,7 @@ export const EditForm = ({ data, formCloseFunction }) => {
   }
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} className="flex flex-row">
       <input
         type="text"
         name="name"
@@ -39,6 +39,14 @@ export const EditForm = ({ data, formCloseFunction }) => {
         <option value="Admin">Admin</option>
       </select>
       <button className="save">Save</button>
+      
+      <button
+        onClick={() => {
+          formCloseFunction(false);
+        }}
+      >
+        Cancel
+      </button>
     </form>
   );
 };

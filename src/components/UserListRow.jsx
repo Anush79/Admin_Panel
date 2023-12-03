@@ -19,17 +19,9 @@ export const Row = ({ item }) => {
   };
   const isSelected =  selectedUsers?.find((elem) => elem === item.id)
   return openModal ? (
-    <>
+  
       <EditForm data={item} formCloseFunction={setOpenModal} />
-
-      <button
-        onClick={() => {
-          setOpenModal(!openModal);
-        }}
-      >
-        Cancel
-      </button>
-    </>
+ 
   ) : (
     <li key={item.id} className={`grid grid-row ${isSelected ? "selected": ""}`}>
       <input
@@ -44,7 +36,7 @@ export const Row = ({ item }) => {
       <span>{item.name}</span>
       <span>{item.email}</span>
       <span>{item.role}</span>
-      <span className="grid grid-row">
+      <span className="flex flex-row action-btn">
         <button
           className="edit"
           onClick={() => {
