@@ -27,7 +27,7 @@ function App() {
     : usersState.users;
   return (
     <div className="App">
-  <header>
+  <header className="flex flex-row">
     <input
         className="search-icon"
         type="text"
