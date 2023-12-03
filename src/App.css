@@ -6,49 +6,91 @@
   justify-content: space-between;
   min-height: 100vh;
 }
-button{
+button {
   padding: 0.5rem;
-  border:none;
-  box-shadow:  1px 2px 5px #ccc;
+  border: none;
+  box-shadow: 1px 2px 5px #ccc;
 }
-li{
+li {
   text-align: left;
+  box-shadow: 1px 2px 5px #cccccc54;
+  margin-bottom: 0.5rem;
 }
-.heading{
+.heading {
   background-color: #cccccc94;
   font-weight: 800;
+  padding: 0.5rem;
 }
-.flex{
+.flex {
   display: flex;
 }
-.flex-row{
+.flex-row {
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-.grid{
+.grid {
   display: grid;
   align-items: center;
 }
-.grid-row{
-  grid-template-columns:  40px auto auto auto auto ;
+.grid-row {
+  grid-template-columns: 1fr 3fr 4fr 3fr 2fr;
   justify-content: space-around;
 }
-.selected{
+.selected {
   background-color: #ccc;
 }
-table,td,tr{
+table,
+td,
+tr {
   border: 1px solid blue;
 }
-input,select,button{
-  cursor:pointer;
-  font:inherit;
+input,
+select,
+button,
+option {
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  border-radius: 5px;  
+  padding: 0.5rem;
 }
 input{
   min-width: 250px;
-  padding:0.5rem;
 }
-.nav-btn:focus{
-background-color: red;
+input[type=checkbox] {
+  min-width: 50px;
 }
-li:hover{
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
+.nav-btn:focus,
+.page-selected {
+  background-color: rgba(131, 131, 131, 0.58);
+}
+li:hover {
   background-color: rgba(234, 234, 234, 0.58);
+}
+.delete:hover {
+  color: red;
+}
+.save {
+  background-color: rgb(55, 129, 199);
+  color: #fff;
+}
+
+@media (max-width: 680px) {
+  .grid-row {
+    grid-template-columns: auto;
+    justify-content: space-around;
+    overflow-wrap: normal;
+  }
+  li {
+    border-bottom: 1px solid #ccc;
+  }
+  .flex-row{
+   
+  }
 }

@@ -19,25 +19,27 @@ export const Row = ({ item }) => {
   };
   const isSelected =  selectedUsers?.find((elem) => elem === item.id)
   return openModal ? (
-  
+  <li className="grid">
       <EditForm data={item} formCloseFunction={setOpenModal} />
- 
+ </li>
   ) : (
     <li key={item.id} className={`grid grid-row ${isSelected ? "selected": ""}`}>
-      <input
+     <span> <input
         type="checkbox"
         name="user"
         id="user"
+        value={item.id}
         aria-label="select user"
         checked={isSelected}
         onChange={onChangeHandler}
-      />
+      /></span>
       <span>{item.name}</span>
       <span>{item.email}</span>
       <span>{item.role}</span>
       <span className="flex flex-row action-btn">
         <button
           className="edit"
+          title="Edit"
           onClick={() => {
             setOpenModal(!openModal);
           }}
@@ -46,6 +48,7 @@ export const Row = ({ item }) => {
         </button>
         <button
           className="delete"
+          title="Delete this row"
           onClick={() => dispatch({ type: "DELETE", payload: item.id })}
         >
           <DeleteOutline />

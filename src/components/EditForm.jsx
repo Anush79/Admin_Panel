@@ -19,6 +19,7 @@ export const EditForm = ({ data, formCloseFunction }) => {
 
   return (
     <form onSubmit={onSubmitHandler} className="flex flex-row">
+      <span>Edit user</span>
       <input
         type="text"
         name="name"
