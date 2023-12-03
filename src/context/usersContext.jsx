@@ -10,6 +10,7 @@ const UsersContext = createContext();
 
 export function UsersProvider({ children }) {
   const initialData = {
+    //initial state of users data
     users: [],
   };
 
@@ -34,8 +35,8 @@ export function UsersProvider({ children }) {
         break;
     }
   }
-console.log(usersState.users);
   const getUsers = async () => {
+    //fetches the Users Data from Api
     try {
       const response = await fetch(
         "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
@@ -48,17 +49,20 @@ console.log(usersState.users);
   };
 
   function deleteMultipleAtOnce() {
+    // Deletes All the selected Users Data one by one
     selectedUsers.forEach((element) => {
       dispatch({ type: "DELETE", payload: element });
     });
   }
   function selectAllAtOnce(e) {
+    // Selects Users using checkboxes and add them to the selected users array.
     if (e.target.checked)
       setSelectedUsers(usersState?.users?.map((item) => item.id));
     else setSelectedUsers([]);
   }
-  console.log(selectedUsers);
+
   useEffect(() => {
+    //Fetches the Data each time the page renders.
     getUsers();
   }, []);
 
@@ -78,4 +82,4 @@ console.log(usersState.users);
   );
 }
 
-export const useUsers = () => useContext(UsersContext);
+export const useUsers = () => useContext(UsersContext); //custom hook to for useContext which will provide the context to whole app.

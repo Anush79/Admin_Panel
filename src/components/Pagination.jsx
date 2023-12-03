@@ -4,7 +4,7 @@ import {
 } from "@mui/icons-material";
 
 export default function Pagination({ data, page, setPage }) {
-  const totalPage = Math.ceil(data.length / 10)
+  const totalPage = Math.ceil(data?.length / 10)
 
   return (
     <>
@@ -18,16 +18,17 @@ export default function Pagination({ data, page, setPage }) {
           <button className="nav-btn first-page" onClick={() => setPage(1)}>
             1
           </button>
-          {[...Array(Math.floor(data.length / 10)-1)].map((_, i) => {
+          {totalPage > 1 && [...Array(Math.floor((data?.length / 10)-1))].map((_, i) => {
             return (
               <button className="nav-btn" key={i} onClick={() => setPage(i + 2)}>
                 {i + 2}
               </button>
             );
-          })}
-          <button className="nav-btn last-page" onClick={() => setPage(totalPage)}>
+          })
+          }
+          {<button className="nav-btn last-page" onClick={() => setPage(totalPage)}>
             {totalPage}
-          </button>
+          </button>}
           {page !== Math.ceil(data.length / 10) && (
             <button className="next-page" onClick={() => setPage(page + 1)}>
               <ArrowForwardIos />

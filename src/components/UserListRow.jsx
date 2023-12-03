@@ -29,7 +29,6 @@ export const Row = ({ item }) => {
         name="user"
         id="user"
         aria-label="select user"
-        value={item.id}
         checked={isSelected}
         onChange={onChangeHandler}
       />
