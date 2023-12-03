@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useUsers } from "../context/usersContext";
-
+import { toast } from "react-hot-toast";
 export const EditForm = ({ data, formCloseFunction }) => {
   const { dispatch } = useUsers();
   const [formData, setFormData] = useState(data);
   function onSubmitHandler(e) {
     e.preventDefault();
+    dispatch({ type: "LOADING" })
     dispatch({ type: "EDIT", payload: formData });
     formCloseFunction(false);
+    toast.success(`${data.name} detailed modified successfully`)
   }
   function onChangeHandler(e) {
     const { name, value } = e.target;
@@ -40,7 +42,7 @@ export const EditForm = ({ data, formCloseFunction }) => {
         <option value="Admin">Admin</option>
       </select>
       <button className="save">Save</button>
-      
+
       <button
         onClick={() => {
           formCloseFunction(false);

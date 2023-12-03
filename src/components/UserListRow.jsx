@@ -1,5 +1,6 @@
 import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 
+import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { EditForm } from "../components/EditForm";
 import { useUsers } from "../context/usersContext";
@@ -52,7 +53,10 @@ export const Row = ({ item }) => {
         <button
           className="delete"
           title="Delete this row"
-          onClick={() => dispatch({ type: "DELETE", payload: item.id })}
+          onClick={() =>{ dispatch({ type: "DELETE", payload: item.id })
+        
+          toast.success(`${item.name} Details Deleted`)
+        }}
         >
           <DeleteOutline />
         </button>

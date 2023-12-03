@@ -81,6 +81,21 @@ li:hover {
   background-color: rgb(55, 129, 199);
   color: #fff;
 }
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 11.2px var(--primary-color) double;
+  border-left-style: solid;
+  border-radius: 50%;
+  margin: auto;
+  animation: spinner_animation 0.75s infinite linear;
+}
+
+@keyframes spinner_animation {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @media (max-width: 680px) {
   .grid-row {

@@ -1,9 +1,12 @@
+import { DeleteForever } from "@mui/icons-material";
 import { useState } from "react";
 import "./App.css";
-import { useUsers } from "./context/usersContext";
-import { Row } from "./components/UserListRow";
-import { DeleteForever } from "@mui/icons-material";
 import Pagination from "./components/Pagination";
+import { Row } from "./components/UserListRow";
+import { useUsers } from "./context/usersContext";
+import ToastContainer from "./components/ToastContainer";
+import { Loader } from "./components/Loader";
+
 
 function App() {
   const [searchInput, setSearch] = useState("");
@@ -32,7 +35,6 @@ function App() {
     if (e.target.checked)
       setSelectedUsers(usersToDisplay.map((item) => item.id));
     else setSelectedUsers([]);
-  
   }
 
   return (
@@ -47,6 +49,7 @@ function App() {
             placeholder="Search for id, name, email, role"
             onChange={searchHandler}
           />
+         {usersState?.loading && <Loader />}
           <button
             onClick={deleteMultipleAtOnce}
             title="Delete Selected"
@@ -81,6 +84,7 @@ function App() {
         )}
       </main>
       <Pagination data={filteredData} page={page} setPage={setPage} />
+      <ToastContainer />
     </div>
   );
 }
