@@ -61,8 +61,8 @@ function App() {
             <input
               className=""
               type="checkbox"
-              name="user"
-              id="user"
+              name="all_user"
+              id="all_users"
               aria-label="select all user"
               onChange={selectAllAtOnce}
             />
