@@ -8,7 +8,7 @@ import Pagination from "./components/Pagination";
 function App() {
   const [searchInput, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const { usersState, deleteMultipleAtOnce, selectAllAtOnce } = useUsers();
+  const { usersState, deleteMultipleAtOnce, setSelectedUsers } = useUsers();
 
   const searchHandler = (e) => {
     const { value } = e.target;
@@ -16,8 +16,8 @@ function App() {
     setPage(1);
   };
 
-  const usersToDisplay = searchInput
-    ? usersState?.users.filter(
+  const filteredData = searchInput
+    ? usersState?.users?.filter(
         (item) =>
           item.id === searchInput ||
           item.name.toLowerCase().includes(searchInput) ||
@@ -25,6 +25,16 @@ function App() {
           item.role.toLowerCase().includes(searchInput)
       )
     : usersState.users;
+
+  const usersToDisplay = filteredData?.slice(page * 10 - 10, page * 10);
+  // Selects Users using checkboxes and add them to the selected users array.
+  function selectAllAtOnce(e) {
+    if (e.target.checked)
+      setSelectedUsers(usersToDisplay.map((item) => item.id));
+    else setSelectedUsers([]);
+  
+  }
+
   return (
     <div className="App">
       <main>
@@ -65,14 +75,12 @@ function App() {
         </li>
 
         {usersToDisplay.length > 0 ? (
-          usersToDisplay
-            .slice(page * 10 - 10, page * 10)
-            .map((item) => <Row key={item.id} item={item} />)
+          usersToDisplay.map((item) => <Row key={item.id} item={item} />)
         ) : (
           <h5>No Data Found</h5>
         )}
       </main>
-      <Pagination data={usersToDisplay} page={page} setPage={setPage} />
+      <Pagination data={filteredData} page={page} setPage={setPage} />
     </div>
   );
 }

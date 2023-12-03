@@ -54,12 +54,6 @@ export function UsersProvider({ children }) {
       dispatch({ type: "DELETE", payload: element });
     });
   }
-  function selectAllAtOnce(e) {
-    // Selects Users using checkboxes and add them to the selected users array.
-    if (e.target.checked)
-      setSelectedUsers(usersState?.users?.map((item) => item.id));
-    else setSelectedUsers([]);
-  }
 
   useEffect(() => {
     //Fetches the Data each time the page renders.
@@ -73,7 +67,6 @@ export function UsersProvider({ children }) {
         selectedUsers,
         dispatch,
         setSelectedUsers,
-        selectAllAtOnce,
         deleteMultipleAtOnce,
       }}
     >

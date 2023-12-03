@@ -36,7 +36,7 @@ export default function Pagination({ data, page, setPage }) {
                 </button>
               );
             })}
-          {
+          {totalPage >= 2 &&
             <button
               className={`nav-btn last-page ${
                 page === totalPage ? "page-selected" : ""
